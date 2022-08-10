@@ -1,18 +1,13 @@
 *** Settings ***
 Library                                    Browser
 Library                                    String
+Resource                                   common.resource
 
 *** Variables ***
+${DRY_RUN}                                 ${False}
 ${DATE_START}                              2022/07/01
 ${DATE_END}                                2022/07/02
-
-${TIMEOUT}                                 30s
-${APOLLO_LOGIN_URL}                        https://asiaauth.mayohr.com/HRM/Account/Login
-
-${COMPANY_CODE_INPUT_XPATH}                //input[@name="companyCode"]
-${EMPLOYEE_NO_INPUT_XPATH}                 //input[@name="employeeNo"]
-${PASSWORD_INPUT_XPATH}                    //input[@name="password"]
-${LOGIN_BUTTON_XPATH}                      //button[@type="submit"]
+${APPLY_INTERVAL}                          30s
 
 ${FORM_APPLICATION_LINK_XPATH}             //*[text()="表單申請"]/ancestor::node()[1]
 ${FORGET_PUNCH_LINK_XPATH}                 //a[contains(., '忘打卡申請單')]
@@ -35,9 +30,6 @@ ${LOCATION_BUTTON_XPATH}                   //ul[@id="fm_location_listbox" and @a
 
 ${SUBMIT_BUTTON_XPATH}                     //div[text()="送簽"]/ancestor::node()[1]
 
-${APPLY_WAIT}                              30s
-${APPLY_INTERVAL}                          30s
-
 ${DELETE_BUTTON_XPATH}                     //div[text()="刪除"]/ancestor::node()[1]
 ${DELETE_CONFIRM_BUTTON_XPATH}             //button[contains(., "確定")]
 
@@ -55,6 +47,7 @@ Correct Clock
         ${CHECK_IN_DATETIME} =      Catenate              ${DATE}    09:00
         ${CHECK_OUT_DATETIME} =     Catenate              ${DATE}    18:00
 
+        ${DATE} =                   Set Suite Variable    ${DATE}
         ${CHECK_IN_DATETIME} =      Set Suite Variable    ${CHECK_IN_DATETIME}
         ${CHECK_OUT_DATETIME} =     Set Suite Variable    ${CHECK_OUT_DATETIME}
 
@@ -63,12 +56,6 @@ Correct Clock
     END
 
 *** Keywords ***
-Login
-    Type Text    ${COMPANY_CODE_INPUT_XPATH}    TXOne
-    Type Text    ${EMPLOYEE_NO_INPUT_XPATH}     ${EMPLOYEE_NO}
-    Type Text    ${PASSWORD_INPUT_XPATH}        ${PASSWORD}
-    Click        ${LOGIN_BUTTON_XPATH}
-
 Punch
     [Arguments]    ${CHECK_ACTION}
     [Teardown]     Close Browser
@@ -112,4 +99,5 @@ Punch
     END
 
     # The new tab will auto closed after submit. So we need to switch back to the main tab.
+    Log To Console         Waiting for the ${APPLY_WAIT} to apply the next punch
     Sleep                  ${APPLY_WAIT}
