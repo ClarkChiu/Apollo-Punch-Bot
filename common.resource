@@ -15,3 +15,10 @@ Login
     Type Text    ${EMPLOYEE_NO_INPUT_XPATH}     ${EMPLOYEE_NO}
     Type Text    ${PASSWORD_INPUT_XPATH}        ${PASSWORD}
     Click        ${LOGIN_BUTTON_XPATH}
+
+    # Change Language to Traditional Chinese
+    Click        //*[@class="apollo-user-info"]
+    Click        //*[text()="Language Family" or text()="語系"] 
+    Click        //*[@data-code="zh-tw"]
+
+    Reload

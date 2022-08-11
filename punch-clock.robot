@@ -3,7 +3,7 @@ Library                            Browser
 Resource                           common.resource
 
 *** Variables ***
-${PUNCH_CLOCK_PAGE_LINK_XPATH}     //*[text()="我要打卡"]/ancestor::node()[1]
+${PUNCH_CLOCK_PAGE_LINK_XPATH}     //a[@href="/ta?id=webpunch"]
 ${PUNCH_CLOCK_IN_BUTTON_XPATH}     //*[text()="上班"]/ancestor::node()[1]
 ${PUNCH_CLOCK_OUT_BUTTON_XPATH}    //*[text()="下班"]/ancestor::node()[1]
 
