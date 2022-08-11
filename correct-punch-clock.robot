@@ -35,6 +35,12 @@ ${DELETE_CONFIRM_BUTTON_XPATH}             //button[contains(., "確定")]
 
 *** Test Cases ***
 Correct Clock
+    [Teardown]     Close Browser
+
+    New Page               ${APOLLO_LOGIN_URL}
+    Set Browser Timeout    ${TIMEOUT}
+    Login
+
     # Generate Business Day List
     ${BUSINESS_DAY_LIST} =    Evaluate    pandas.bdate_range(start='${DATE_START}', end='${DATE_END}')    pandas
 
@@ -58,7 +64,6 @@ Correct Clock
 *** Keywords ***
 Punch
     [Arguments]    ${CHECK_ACTION}
-    [Teardown]     Close Browser
 
     IF    "${CHECK_ACTION}" == "IN"
         ${CHECK_ACTION_BUTTON_XPATH} =    Set Variable    ${CHECK_IN_BUTTON_XPATH}
@@ -68,10 +73,7 @@ Punch
         ${CHECK_DATETIME} =               Set Variable    ${CHECK_OUT_DATETIME}
     END
 
-    New Page               ${APOLLO_LOGIN_URL}
-    Set Browser Timeout    ${TIMEOUT}
-    Login
-
+    Go To                  ${APOLLO_MAIN_PAGE_URL}
     Click                  ${FORM_APPLICATION_LINK_XPATH}
     Click                  ${FORGET_PUNCH_LINK_XPATH}
     Switch Page            NEW
@@ -95,9 +97,9 @@ Punch
         Click              ${DELETE_CONFIRM_BUTTON_XPATH}
     ELSE
         Click              id=${BANNER_IFRAME_ID_ON_FORGET_PUNCH_PAGE} >>> ${SUBMIT_BUTTON_XPATH}
-        Log To Console     \n${DATE} Checked ${CHECK_ACTION}
+        Log To Console     \n${DATE} Checking ${CHECK_ACTION}
     END
 
     # The new tab will auto closed after submit. So we need to switch back to the main tab.
-    Log To Console         Waiting for the ${APPLY_WAIT} to apply the next punch
+    Log To Console         Waiting for the ${APPLY_WAIT} to apply the punch
     Sleep                  ${APPLY_WAIT}

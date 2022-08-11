@@ -1,6 +1,7 @@
 *** Variables ***
 ${TIMEOUT}                                 30s
 ${APOLLO_LOGIN_URL}                        https://asiaauth.mayohr.com/HRM/Account/Login
+${APOLLO_MAIN_PAGE_URL}                    https://apollo.mayohr.com/tube
 
 ${COMPANY_CODE_INPUT_XPATH}                //input[@name="companyCode"]
 ${EMPLOYEE_NO_INPUT_XPATH}                 //input[@name="employeeNo"]
