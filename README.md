@@ -15,21 +15,6 @@ poetry install --no-dev
 rfbrowser init
 ```
 
-## Usage Example for correct punch clock
-
-```shell
-EMPLOYEE_NO=5487
-PASSWORD=5487
-
-robot --variable EMPLOYEE_NO:${EMPLOYEE_NO} \
-      --variable PASSWORD:${PASSWORD} \
-      --variable DRY_RUN:False \
-      --variable DATE_START:2022/07/05 \
-      --variable DATE_END:2022/07/05 \
-      --outputdir result \
-      correct-punch-clock.robot
-```
-
 ## Usage Example for daily punch clock
 
 ```shell
@@ -39,7 +24,7 @@ PASSWORD=5487
 robot --variable EMPLOYEE_NO:${EMPLOYEE_NO} \
       --variable PASSWORD:${PASSWORD} \
       --variable CHECK_ACTION:IN \
-      --outputdir result \
+      --outputdir result/`date +"%Y%m%d-%H%M"` \
       punch-clock.robot
 ```
 
@@ -61,9 +46,24 @@ Valid:          True
 - Add cronjob (Using Perl for random sleep)
 
 ```shell
-30 08 * * 1-5 perl -e 'sleep(rand(1800))'; cd /home/clark/apollo-punch-bot && /home/clark/.cache/pypoetry/virtualenvs/apollo-punch-bot-YHbyUk43-py3.10/bin/robot --variable EMPLOYEE_NO:${EMPLOYEE_NO} --variable PASSWORD:${PASSWORD} --variable CHECK_ACTION:IN --outputdir result punch-clock.robot
+30 08 * * 1-5 perl -e 'sleep(rand(1800))'; cd /home/clark/apollo-punch-bot && /home/clark/.cache/pypoetry/virtualenvs/apollo-punch-bot-YHbyUk43-py3.10/bin/robot --variable EMPLOYEE_NO:${EMPLOYEE_NO} --variable PASSWORD:${PASSWORD} --variable CHECK_ACTION:IN --outputdir result/`date +"%Y%m%d-%H%M"` punch-clock.robot
 
-00 18 * * 1-5 perl -e 'sleep(rand(1800))'; cd /home/clark/apollo-punch-bot && /home/clark/.cache/pypoetry/virtualenvs/apollo-punch-bot-YHbyUk43-py3.10/bin/robot --variable EMPLOYEE_NO:${EMPLOYEE_NO} --variable PASSWORD:${PASSWORD} --variable CHECK_ACTION:OUT --outputdir result punch-clock.robot
+00 18 * * 1-5 perl -e 'sleep(rand(1800))'; cd /home/clark/apollo-punch-bot && /home/clark/.cache/pypoetry/virtualenvs/apollo-punch-bot-YHbyUk43-py3.10/bin/robot --variable EMPLOYEE_NO:${EMPLOYEE_NO} --variable PASSWORD:${PASSWORD} --variable CHECK_ACTION:OUT --outputdir result/`date +"%Y%m%d-%H%M"` punch-clock.robot
+```
+
+## Usage Example for correct punch clock
+
+```shell
+EMPLOYEE_NO=5487
+PASSWORD=5487
+
+robot --variable EMPLOYEE_NO:${EMPLOYEE_NO} \
+      --variable PASSWORD:${PASSWORD} \
+      --variable DRY_RUN:False \
+      --variable DATE_START:2022/07/05 \
+      --variable DATE_END:2022/07/05 \
+      --outputdir result/`date +"%Y%m%d-%H%M"` \
+      correct-punch-clock.robot
 ```
 
 ## ToDo
