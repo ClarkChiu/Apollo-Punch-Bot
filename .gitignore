@@ -1,5 +1,6 @@
 # Custom
 result/
+user.config
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
