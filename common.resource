@@ -17,6 +17,8 @@ Login
     Type Text    ${PASSWORD_INPUT_XPATH}        ${PASSWORD}
     Click        ${LOGIN_BUTTON_XPATH}
 
+    Wait Until Network Is Idle
+
     # Change Language to Traditional Chinese
     Click        //*[@class="apollo-user-info"]
     Click        //*[text()="Language Family" or text()="語系"] 
