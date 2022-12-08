@@ -24,7 +24,7 @@ ${CHECK_OUT_BUTTON_XPATH}                  //ul[@id="fm_attendancetype_listbox" 
 ${DATE_TIME_INPUT_ID}                      fm_datetime
 ${DATE_TIME_INPUT_XPATH}                   //input[@id="${DATE_TIME_INPUT_ID}"]
 
-${LOCATION_STRING}                         台北 Taipei
+${LOCATION_STRING}                         台北信義Taipei
 ${LOCATION_DROPDOWN_XPATH}                 //*[@id="location_input"]
 ${LOCATION_BUTTON_XPATH}                   //ul[@id="fm_location_listbox" and @aria-live="polite"]/li[text()="${LOCATION_STRING}"]
 
