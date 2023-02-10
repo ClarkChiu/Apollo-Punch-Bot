@@ -1,6 +1,6 @@
 *** Settings ***
 Library                            Browser
-Resource                           ../apollo-punch-bot/common.resource
+Resource                           ../src/common.resource
 
 *** Variables ***
 

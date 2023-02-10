@@ -13,20 +13,30 @@
 ```shell
 poetry install --no-dev
 rfbrowser init
+mv user.config.example user.config
+
+# Update your user config in user.config file
+vim user.config
 ```
 
-## Usage Example for daily punch clock
+## Usage example for daily punch clock
 
 ```shell
-EMPLOYEE_NO=5487
-PASSWORD=5487
-
-# You can use --argumentfile user.config to setting EMPLOYEE_NO and PASSWORD variable
-robot --variable EMPLOYEE_NO:${EMPLOYEE_NO} \
-      --variable PASSWORD:${PASSWORD} \
+robot --argumentfile user.config \
       --variable CHECK_ACTION:IN \
       --outputdir result/`date +"%Y%m%d-%H%M"` \
-      punch-clock.robot
+      src/punch-clock.robot
+```
+
+You can use `--variable` in argument directly if you want
+
+```shell
+robot --variable EMPLOYEE_NO:5487 \
+      --variable PASSWORD:GiveMeTheMoney \
+      --variable DATE_START:2022/07/05 \
+      --variable DATE_END:2022/07/05 \
+      --outputdir result/`date +"%Y%m%d-%H%M"` \
+      src/correct-punch-clock.robot
 ```
 
 ## Setup cronjob for working day
@@ -47,21 +57,19 @@ Valid:          True
 - Add cronjob (Using Perl for random sleep) [^1]
 
 ```shell
-45 08 * * 1-5 perl -e 'sleep(rand(900))'; cd /home/clark/apollo-punch-bot && /home/clark/.cache/pypoetry/virtualenvs/apollo-punch-bot-YHbyUk43-py3.10/bin/robot --argumentfile user.config --variable CHECK_ACTION:IN --outputdir result/`date +"\%Y\%m\%d-\%H\%M"` punch-clock.robot
+45 08 * * 1-5 perl -e 'sleep(rand(900))'; cd /home/clark/apollo-punch-bot && /home/clark/.cache/pypoetry/virtualenvs/apollo-punch-bot-YHbyUk43-py3.10/bin/robot --argumentfile user.config --variable CHECK_ACTION:IN --outputdir result/`date +"\%Y\%m\%d-\%H\%M"` src/punch-clock.robot
 
-00 18 * * 1-5 perl -e 'sleep(rand(900))'; cd /home/clark/apollo-punch-bot && /home/clark/.cache/pypoetry/virtualenvs/apollo-punch-bot-YHbyUk43-py3.10/bin/robot --argumentfile user.config --variable CHECK_ACTION:OUT --outputdir result/`date +"\%Y\%m\%d-\%H\%M"` punch-clock.robot
-
+00 18 * * 1-5 perl -e 'sleep(rand(900))'; cd /home/clark/apollo-punch-bot && /home/clark/.cache/pypoetry/virtualenvs/apollo-punch-bot-YHbyUk43-py3.10/bin/robot --argumentfile user.config --variable CHECK_ACTION:OUT --outputdir result/`date +"\%Y\%m\%d-\%H\%M"` src/punch-clock.robot
 ```
 
 ## Usage Example for correct punch clock
 
+- Update the date range in user.config.
+
 ```shell
 robot --argumentfile user.config \
-      --variable DRY_RUN:False \
-      --variable DATE_START:2022/07/05 \
-      --variable DATE_END:2022/07/05 \
       --outputdir result/`date +"%Y%m%d-%H%M"` \
-      correct-punch-clock.robot
+      src/correct-punch-clock.robot
 ```
 
 ## ToDo
