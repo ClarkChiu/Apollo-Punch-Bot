@@ -11,10 +11,16 @@ Use `ppodgorsek/docker-robot-framework` directly
 
 - Docker (or you can try `podman`, of course)
 
-## Config file ([config/user.config.example](./config/user.config.example))
+## Config
+
+- [Example config file](./config/user.config.example)
 
 ```shell
-mv config/user.config.example config/user.config
+# Clone the project
+git clone https://github.com/ClarkChiu/Apollo-Punch-Bot.git
+
+# Copy the example config file
+cp config/user.config.example config/user.config
 
 # Update your user config in user.config file
 vim config/user.config
