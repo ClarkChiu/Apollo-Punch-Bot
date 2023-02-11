@@ -1,6 +1,7 @@
 *** Settings ***
 Library                                    Browser
 Library                                    String
+Library                                    ../src/date_provider.py
 Resource                                   common.resource
 
 *** Variables ***
@@ -42,7 +43,7 @@ Correct Clock
     Login
 
     # Generate Business Day List
-    ${BUSINESS_DAY_LIST} =    Evaluate    pandas.bdate_range(start='${DATE_START}', end='${DATE_END}')    pandas
+    ${BUSINESS_DAY_LIST} =    Get Working Dates In Range    ${DATE_START}    ${DATE_END}
 
     FOR    ${IDX}    ${DATE}    IN ENUMERATE    @{BUSINESS_DAY_LIST}
         Run Keyword If              ${IDX} != 0           Sleep      ${APPLY_INTERVAL}

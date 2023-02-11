@@ -1,5 +1,5 @@
 *** Variables ***
-${TIMEOUT}                                 30s
+${TIMEOUT}                                 1 minute 30 seconds
 ${APOLLO_LOGIN_URL}                        https://asiaauth.mayohr.com/HRM/Account/Login
 ${APOLLO_MAIN_PAGE_URL}                    https://apollo.mayohr.com/tube
 
@@ -8,7 +8,7 @@ ${EMPLOYEE_NO_INPUT_XPATH}                 //input[@name="employeeNo"]
 ${PASSWORD_INPUT_XPATH}                    //input[@name="password"]
 ${LOGIN_BUTTON_XPATH}                      //button[@type="submit"]
 
-${APPLY_WAIT}                              30s
+${APPLY_WAIT}                              30 seconds
 
 *** Keywords ***
 Login
