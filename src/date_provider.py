@@ -1,11 +1,10 @@
 import os
 from datetime import timedelta, datetime, date
 
-apollo_datetime_format = '%Y/%m/%d'
-check_datetime_format = '%Y%m%d'
+datetime_format = '%Y/%m/%d'
 
 def is_today_a_holiday():
-    today_date = date.today().strftime(check_datetime_format)
+    today_date = date.today().strftime(datetime_format)
     return is_holiday(today_date)
 
 def is_holiday(date_str):
@@ -27,15 +26,15 @@ def is_holiday(date_str):
         return False
 
 def get_working_dates_in_range(start_date_str, end_date_str):
-    start_date = datetime.strptime(start_date_str, apollo_datetime_format).date()
-    end_date = datetime.strptime(end_date_str, apollo_datetime_format).date()
+    start_date = datetime.strptime(start_date_str, datetime_format).date()
+    end_date = datetime.strptime(end_date_str, datetime_format).date()
     
     date_list = []
 
     for n in range(int((end_date - start_date).days) + 1):
-        next_day = start_date + timedelta(n)
+        next_day = (start_date + timedelta(n)).strftime(datetime_format)
 
-        if not is_holiday(next_day.strftime(check_datetime_format)):
-            date_list.append(next_day.strftime(apollo_datetime_format))
+        if not is_holiday(next_day):
+            date_list.append(next_day)
     
     return date_list

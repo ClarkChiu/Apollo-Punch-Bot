@@ -23,7 +23,7 @@ Check Login
 Get The Official Holidays in 2023
     ${WORKING_DAY_LIST_FROM_LIB} =     Get Working Dates In Range    2023/01/01    2023/12/31
 
-    ${WORKING_DAY_FROM_FILE} =         Get File                      test/data/2023_working_day_in_apollo_format.txt
+    ${WORKING_DAY_FROM_FILE} =         Get File                      test/data/2023_working_day.txt
     ${WORKING_DAY_LIST_FROM_FILE} =    Split String                  ${WORKING_DAY_FROM_FILE}
 
     Should Be Equal    ${WORKING_DAY_LIST_FROM_LIB}    ${WORKING_DAY_LIST_FROM_FILE}
