@@ -1,0 +1,22 @@
+name: Basic Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: ppodgorsek/robot-framework:5.0.0
+      env:
+        TZ: Asia/Taipei
+      volumes: 
+        - /home/clark/apollo-punch-bot:/apollo-punch-bot
+      options: -w /apollo-punch-bot --user root
+    name: Basic Tests
+    steps:
+    - uses: actions/checkout@v3
+    - run: robot --exclude local --outputdir /tmp test

@@ -12,6 +12,7 @@ ${TARGET_ELEMENT_AFTER_LOGIN}    //*[contains(text(),'我要打卡')]
 
 *** Test Cases ***
 Check Login
+    [Tags]                 local
     [Teardown]             Close Browser
 
     New Page               ${APOLLO_LOGIN_URL}
