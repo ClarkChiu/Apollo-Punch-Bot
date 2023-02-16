@@ -1,3 +1,4 @@
+--variable COMPANY:TXOne
 --variable EMPLOYEE_NO:5487
 --variable PASSWORD:GiveMeTheMoney
 --variable LOCATION_STRING:台北信義Taipei

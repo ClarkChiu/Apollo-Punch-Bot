@@ -12,7 +12,7 @@ ${APPLY_WAIT}                              30 seconds
 
 *** Keywords ***
 Login
-    Type Text    ${COMPANY_CODE_INPUT_XPATH}    TXOne
+    Type Text    ${COMPANY_CODE_INPUT_XPATH}    ${COMPANY}
     Type Text    ${EMPLOYEE_NO_INPUT_XPATH}     ${EMPLOYEE_NO}
     Type Text    ${PASSWORD_INPUT_XPATH}        ${PASSWORD}
     Click        ${LOGIN_BUTTON_XPATH}
