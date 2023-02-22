@@ -1,6 +1,6 @@
 # Punch Clock Tool for Apollo HR System
 
-## Features (by ChatGPT :))
+## Features (by ChatGPT 😁)
 
 - Daily Check-In/Out: The tool can automatically clock in and out for daily attendance records.
 
@@ -72,7 +72,7 @@ sudo docker run --rm -e "TZ=Asia/Taipei" -v /home/clark/apollo-punch-bot/:/apoll
 sudo docker run --rm  -e "TZ=Asia/Taipei" -v /home/clark/apollo-punch-bot/:/apollo-punch-bot -w /apollo-punch-bot ppodgorsek/robot-framework:latest bash -c "robot --argumentfile config/user.config --outputdir result/`date +"%Y%m%d-%H%M"` test"
 ```
 
-## Parameters description (by ChatGPT, too :))
+## Parameters description (by ChatGPT, too 😁)
 
 - `sudo`: runs the docker command with superuser privileges.
 - `docker run`: starts a new container and runs a command inside it.
