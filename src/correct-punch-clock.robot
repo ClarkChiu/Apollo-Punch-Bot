@@ -1,7 +1,5 @@
 *** Settings ***
-Library                                    Browser
 Library                                    String
-Library                                    ../src/date_provider.py
 Resource                                   common.resource
 
 *** Variables ***

@@ -1,3 +1,7 @@
+*** Settings ***
+Library                                    Browser
+Library                                    date_provider.py
+
 *** Variables ***
 ${TIMEOUT}                                 1 minute 30 seconds
 ${APOLLO_LOGIN_URL}                        https://asiaauth.mayohr.com/HRM/Account/Login
