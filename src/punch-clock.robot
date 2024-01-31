@@ -19,6 +19,7 @@ Punch Clock
             ${CHECK_ACTION_BUTTON_XPATH} =    Set Variable    ${PUNCH_CLOCK_OUT_BUTTON_XPATH}
         END
 
+        New Context            locale=zh-TW
         New Page               ${APOLLO_LOGIN_URL}
         Set Browser Timeout    ${TIMEOUT}
         Login

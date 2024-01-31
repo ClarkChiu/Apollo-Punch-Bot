@@ -36,6 +36,7 @@ ${DELETE_CONFIRM_BUTTON_XPATH}             //button[contains(., "確定")]
 Correct Clock
     [Teardown]     Close Browser
 
+    New Context            locale=zh-TW
     New Page               ${APOLLO_LOGIN_URL}
     Set Browser Timeout    ${TIMEOUT}
     Login
