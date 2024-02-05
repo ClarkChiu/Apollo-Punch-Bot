@@ -13,9 +13,10 @@ ${PASSWORD_INPUT_XPATH}                    //input[@name="password"]
 ${LOGIN_BUTTON_XPATH}                      //button[@type="submit"]
 
 ${APPLY_WAIT}                              30 seconds
+${TARGET_STATE_FILEPATH}                   ${EXECDIR}${/}config${/}state.json
 
 *** Keywords ***
-Login
+Normal Login
     Fill Secret    ${COMPANY_CODE_INPUT_XPATH}    $COMPANY
     Fill Secret    ${EMPLOYEE_NO_INPUT_XPATH}     $EMPLOYEE_NO
     Fill Secret    ${PASSWORD_INPUT_XPATH}        $PASSWORD

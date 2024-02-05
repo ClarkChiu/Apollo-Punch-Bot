@@ -1,6 +1,7 @@
 # Custom
 result/
 user.config
+state.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

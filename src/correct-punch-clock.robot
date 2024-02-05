@@ -39,7 +39,7 @@ Correct Clock
     New Context            locale=zh-TW
     New Page               ${APOLLO_LOGIN_URL}
     Set Browser Timeout    ${TIMEOUT}
-    Login
+    Normal Login
 
     # Generate Business Day List
     ${BUSINESS_DAY_LIST} =    Get Working Dates In Range    ${DATE_START}    ${DATE_END}

@@ -21,6 +21,19 @@ Check Login
     Login
     Get Element            ${TARGET_ELEMENT_AFTER_LOGIN}
 
+Login with 2FA State
+    [Tags]         local
+    [Teardown]     Close Browser
+
+    New context    locale=zh-TW
+    ...            storageState=${TARGET_STATE_FILEPATH}
+
+    New Page       ${APOLLO_MAIN_PAGE_URL}
+
+    Wait Until Network Is Idle
+
+    Get Element    ${TARGET_ELEMENT_AFTER_LOGIN}
+
 Is Today a Holiday?
     ${CURRENT_YEAR} =                  Get Current Date    result_format=%Y
     ${TODAY} =                         Get Current Date    result_format=%Y/%m/%d

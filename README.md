@@ -51,6 +51,9 @@ vim config/user.config
 - Escaping characters is used in below crontab example for getting the date
 
 ```shell
+# Keep 2FA Alive
+00 08 * * *   sudo docker run --rm -e "TZ=Asia/Taipei" -v /home/clark/apollo-punch-bot/:/apollo-punch-bot -w /apollo-punch-bot ppodgorsek/robot-framework:latest bash -c "robot --argumentfile config/user.config -t 'Keep 2FA State Alive' --outputdir result/`date +"\%Y\%m\%d-\%H\%M"` src/2fa_utility.robot"
+
 # Punch Check In
 45 08 * * 1-5 perl -e 'sleep(rand(900))'; sudo docker run --rm -e "TZ=Asia/Taipei" -v /home/clark/apollo-punch-bot/:/apollo-punch-bot -w /apollo-punch-bot ppodgorsek/robot-framework:latest bash -c "robot --argumentfile config/user.config --variable CHECK_ACTION:IN --outputdir result/`date +"\%Y\%m\%d-\%H\%M"` src/punch-clock.robot"
 

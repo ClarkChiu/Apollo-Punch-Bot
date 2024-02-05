@@ -4,3 +4,7 @@
 --variable LOCATION_STRING:台北信義Taipei
 --variable DATE_START:2022/12/06
 --variable DATE_END:2022/12/07
+--variable 2FA_LOGIN:False
+--variable 2FA_DOMAIN:txone.com
+--variable 2FA_USERNAME:5487
+--variable 2FA_PASSWORD:GiveMeTheMoney
