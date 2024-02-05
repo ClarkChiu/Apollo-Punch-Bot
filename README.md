@@ -10,6 +10,8 @@
 
 - Customizable Holiday List: The tool's default list of national holidays can be customized by users to add or remove holidays. Example: [2023 Holiday Configuration](./config/holidays/2023.txt)
 
+- Login with 2FA (currently we are using Microsoft flow, you can follow the source code to changing to other service)
+
 ## Prerequisite
 
 - Docker (or you can try `podman`, of course)
@@ -37,6 +39,14 @@ cp config/user.config.example config/user.config
 
 # Update your user config in user.config file
 vim config/user.config
+```
+
+## 2FA Login
+
+Get your login state first if you are using 2FA authentication
+
+```shell
+sudo docker run --rm -e "TZ=Asia/Taipei" -v /home/clark/apollo-punch-bot/:/apollo-punch-bot -w /apollo-punch-bot ppodgorsek/robot-framework:latest bash -c "robot --argumentfile config/user.config -t 'Get 2FA Login State' --outputdir result/`date +"\%Y\%m\%d-\%H\%M"` src/2fa_utility.robot"
 ```
 
 ## Note
